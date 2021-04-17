@@ -24,7 +24,8 @@ dict_app = {
 }
 
 # android sdk路径
-android_sdk_dir = 'D:/Apps/platform-tools'
+# android_sdk_dir = 'D:/Apps/platform-tools'
+android_sdk_dir = os.getenv('ANDROID_PLATFORM_TOOLS')
 
 if __name__ == '__main__':
     ##切换到adb所在目录可以自己修改
@@ -59,6 +60,7 @@ if __name__ == '__main__':
 
         # 滑动休眠次数
         sleep_count = random.randint(30, 60)
+        sleep_number = 0
 
         #　开始刷
         while finish_count < count:
@@ -67,9 +69,11 @@ if __name__ == '__main__':
             
             time.sleep(random.randint(dict_app[app]['t_s'], dict_app[app]['t_e']))
 
-            if finish_count % sleep_count == 0:
+            sleep_number = sleep_number + 1
+            if sleep_number == sleep_count:
                 # 重置滑动休眠次数
                 sleep_count = random.randint(30, 60)
+                sleep_number = 0
 
                 # 回到桌面
                 fun = os.system('adb shell input keyevent 3')
