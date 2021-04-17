@@ -4,21 +4,20 @@ import random
 
 # key: appName, vlaue: start adb command
 dict_app = {
+    ## 快手极速版
+    'kuaishou_lite': {
+        'bootstrap': 'adb shell am start -n com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
+        't_s': 5,
+        't_e': 10
+    },
+
     ## 抖音极速版
-    'douyin_lite': 
-    {
+    'douyin_lite': {
         # 启动APP命令
         'bootstrap': 'adb shell am start -n com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
         # 滑动间隔随机数最小值
         't_s': 5,
         # 滑动间隔随机数最大值
-        't_e': 10
-    },
-
-    ## 快手极速版
-    'kuaishou_lite': {
-        'bootstrap': 'adb shell am start -n com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
-        't_s': 5,
         't_e': 10
     }
 }
