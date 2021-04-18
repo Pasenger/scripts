@@ -21,7 +21,6 @@ dict_app = {
         'bootstrap': 'adb shell am start -n com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
         # 停止命令
         'stop_cmd': 'adb shell am force-stop com.kuaishou.nebula',
-        
         't_s': 5,
         't_e': 10
     },
@@ -37,6 +36,16 @@ dict_app = {
         # 滑动间隔随机数最大值
         't_e': 10
     }
+
+    # 'xiaoshuo_fanqie': {
+    #     'package': 'com.dragon.read',
+    #     'bootstrap': 'adb shell am start -n com.dragon.read/.reader.ReaderActivity',
+    #     'stop_cmd': 'adb shell am force-stop com.dragon.read',
+    #     # 滑动间隔随机数最小值
+    #     't_s': 4,
+    #     # 滑动间隔随机数最大值
+    #     't_e': 7
+    # }
 }
 
 # android sdk路径
@@ -121,6 +130,9 @@ def run(app, run_time_seconds):
 
     # 回到桌面
     fun = os.system('adb shell input keyevent 3')
+
+    # 停止
+    fun = os.system(dict_app[app]['stop_cmd'])
 
     # 息屏
     fun = os.system('adb shell input keyevent 223') 
